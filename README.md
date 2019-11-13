@@ -1,2 +1,2 @@
-# intro-to-vuejs
-basic of vuej
+# Intro-to-Vuejs
+- Vue Instace 
