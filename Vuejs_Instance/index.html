@@ -1,58 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>VueJs Instance</title>
-        <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700" rel="stylesheet" />
-    </head>
-    <body class="bg-green-100 text-gray-700 text-xl" style="font-family: 'Source Sans Pro', sans-serif">
-        <div class="container mx-auto">
-            <img class="absolute w-20" style="top: 10px;" src="/image/vue_icon.png" alt="vue_icon" />
-            <h1 class="text-6xl text-center text-green-800 underline">Vue Instance</h1>
-            <h2 class="text-4xl mt-10 mb-3">What is Vue instance ?</h2>
+	<head>
+		<title>VueJs Instance</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
+			rel="stylesheet"
+		/>
+	</head>
+	<body
+		class="bg-green-100 text-gray-700 text-xl"
+		style="font-family: 'Source Sans Pro', sans-serif"
+	>
+		<div class="container mx-auto">
+			<img
+				class="absolute w-20"
+				style="top: 10px;"
+				src="../image/vue_icon.png"
+				alt="vue_icon"
+			/>
+			<h1 class="text-6xl text-center text-green-800 underline">
+				Vue Instance
+			</h1>
+			<h2 class="text-4xl mt-10 mb-3">What is Vue instance ?</h2>
 
-            <!-- Vue Instace Plugging element -->
-            <p id="root" class="tracking-wider leading-relaxed">{{vueInstance}} <br /><span class="text-base">(Getting the above data from vue instace's data)</span></p>
+			<!-- Vue Instace Plugging element -->
+			<p id="root" class="tracking-wider leading-relaxed">
+				{{vueInstance}} <br /><span class="text-base"
+					>(Getting the above data from vue instace's data)</span
+				>
+			</p>
 
-
-            <div class="m-10 py-3 px-10 border bg-green-900">
-                <p class="font-mono text-white"> var app = new Vue({ option }) </p>
-            </div>
-            <p class="leading-relaxed tracking-wider">It is created by passing an options object into it. Just like it sounds, this object has a variety of optional properties that give the instance the ability to store data and perform actions.</p>
-            <p class="mt-10 mb-5 underline text-4xl">OPTIONS - </p>
-            <h2 class="font-semibold mt-7 mb-3">Plugging in to an Element</h2>
-            <div class="m-10 py-3 px-10 border bg-green-900">
-                <p class="font-mono text-white"> el: "#root", </p>
-            </div>
-            <p class="leading-relaxed tracking-wider">The Vue instance is then plugged into an element of your choosing, forming a relationship between the instance and that portion of the DOM.</p>
-            <h2 class="font-semibold mt-8 mb-3">Putting our data in its place</h2>
-            <div class="m-10 py-3 px-10 border bg-green-900">
-                <p class="font-mono text-white"> data: { vueInstance: " data to be displayed will go here." }, </p>
-            </div>
-            <p class="leading-relaxed tracking-wider">The Vue instance is then plugged into an element of your choosing, forming a relationship between the instance and that portion of the DOM.</p>
-            <p class="mt-10 mb-5 underline text-4xl">IMPORTANT TERMS</p>
-            <h2 class="font-semibold mt-7 mb-3">Expression</h2>
-            <p class="leading-relaxed tracking-wider">Expressions allow us to utilize existing data values, together with logic, to produce new data values.</p>   
-            <div class="m-10 py-3 px-10 border bg-green-900">
-                <div class="font-mono text-white">
-                    <p>{{ dataValue + '?' }}</p>
-                    <p>{{ first_name + ' ' + last_name }}</p>
-                    <p>{{ message.split('.') }}</p>
-                </div>
-            </div>
-            <p class="leading-relaxed tracking-wider">When Vue sees the expression {{ vueInstance }}, it recognizes that we are referencing the associated Vue instance’s data.</p>
-        </div>
-        <footer class="mt-16 bg-green-500 p-4">
-            <p class="text-center text-white leading-relaxed tracking-wider uppercase">Learning VueJs</p>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script>
-            const app = new Vue({
-                el: "#root",
-                data: {
-                    vueInstance: "Vue instance is heart of application. It plugs in the element in the DOM, and that element can use an expression(eg. {{vueInstance}}) to display that instance's data."
-                }
-            })
-        </script>
-    </body>
-</html> 
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">var app = new Vue({ option })</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				It is created by passing an options object into it. Just like it sounds,
+				this object has a variety of optional properties that give the instance
+				the ability to store data and perform actions.
+			</p>
+			<p class="mt-10 mb-5 underline text-4xl">OPTIONS -</p>
+			<h2 class="font-semibold mt-7 mb-3">Plugging in to an Element</h2>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">el: "#root",</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				The Vue instance is then plugged into an element of your choosing,
+				forming a relationship between the instance and that portion of the DOM.
+			</p>
+			<h2 class="font-semibold mt-8 mb-3">Putting our data in its place</h2>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					data: { vueInstance: " data to be displayed will go here." },
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				The Vue instance is then plugged into an element of your choosing,
+				forming a relationship between the instance and that portion of the DOM.
+			</p>
+			<p class="mt-10 mb-5 underline text-4xl">IMPORTANT TERMS</p>
+			<h2 class="font-semibold mt-7 mb-3">Expression</h2>
+			<p class="leading-relaxed tracking-wider">
+				Expressions allow us to utilize existing data values, together with
+				logic, to produce new data values.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<div class="font-mono text-white">
+					<p>{{ dataValue + '?' }}</p>
+					<p>{{ first_name + ' ' + last_name }}</p>
+					<p>{{ message.split('.') }}</p>
+				</div>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				When Vue sees the expression {{ vueInstance }}, it recognizes that we
+				are referencing the associated Vue instance’s data.
+			</p>
+		</div>
+		<footer class="mt-16 bg-green-500 p-4">
+			<p
+				class="text-center text-white leading-relaxed tracking-wider uppercase"
+			>
+				Learning VueJs
+			</p>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#root',
+				data: {
+					vueInstance:
+						"Vue instance is heart of application. It plugs in the element in the DOM, and that element can use an expression(eg. {{vueInstance}}) to display that instance's data."
+				}
+			});
+		</script>
+	</body>
+</html>
