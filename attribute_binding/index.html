@@ -10,9 +10,19 @@
 			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
 			rel="stylesheet"
 		/>
+		<style>
+			.status-img {
+				left: -42px;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.status-img > img {
+				width: 28px;
+			}
+		</style>
 	</head>
-	<body class="bg-green-100 text-gray-700">
-		<div class="container mx-auto">
+	<body class="bg-green-100 text-gray-700 text-xl">
+		<div id="app" class="container mx-auto">
 			<a href="https://vuejs-basics.netlify.com" class="absolute">
 				<img
 					class="w-20"
@@ -20,9 +30,122 @@
 					src="../image/vue_icon.png"
 					alt="vue_icon"
 			/></a>
-			<h1 class="text-6xl text-center text-green-800 underline">
+			<h1 class="text-6xl text-center text-green-800 underline my-8">
 				Attribute Binding
 			</h1>
+			<p class="tracking-wider leading-relaxed">
+				Mustaches cannot be used inside Html attributes. Instead, use
+				directives. Directives are special attribites with the
+				<strong>v-</strong> perfix (eg: v-if, v-else so on...).
+				<br />
+				Some diectives can take an argument, denoted by a colon after the
+				directive name. For example. the <strong>v-bind</strong> directive is
+				used to reactively update an HTML attribute(v-bind:href="")
+			</p>
+			<!-- Dynamic Attribite name :[]= or v-bind:[]= -->
+			<div class="m-10 py-3 px-10 border bg-green-900 relative">
+				<span v-bind:[att]="'absolute ' + classImg">
+					<img src="../image/wrong.png" alt="wrong" />
+				</span>
+				<p class="font-mono text-white">
+					&lt;div id={{dynamicId}}&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<!-- Javascript expression inside data binding -->
+			<div class="m-10 py-3 px-10 border bg-green-900 relative">
+				<span :class="'absolute ' + classImg">
+					<img src="../image/correct.png" alt="correct" />
+				</span>
+				<p class="font-mono text-white">
+					&lt;div v-bind:id="dynamicId"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<h2 class="font-semibold mt-8 mb-3"># Using Javascript expression</h2>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:id="'list-' + id"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<h2 class="font-semibold mt-8 mb-3"># Dynamic Arguments</h2>
+			<p class="tracking-wider leading-relaxed">
+				It is also possible to use a JavaScript expression in a directive
+				argument by wrapping it with square brackets
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;a v-bind:[attributeName]="url"&gt;&lt;/a&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;a v-on:[eventName]="doSomething"&gt;&lt;/a&gt;
+				</p>
+			</div>
+			<h2 class="font-semibold mt-8 mb-3"># Modifiers</h2>
+			<p class="tracking-wider leading-relaxed">
+				Modifiers are special postfixes denoted by a dot , which indicate that a
+				directive should be bound in some special way. <br />
+				For example, the <strong><em>.prevent</em></strong> modifier tells the
+				<strong>v-on</strong> directive to call
+				<strong><em>event.preventDefault()</em></strong> on the triggered event:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;form v-on:id=submit.prevent="onSubmit"&gt;&lt;/form&gt;
+				</p>
+			</div>
+
+			<h2 class="font-semibold text-3xl mb-4">
+				<span class="text-teal-800 p-2 bg-green-300">v-bind</span> Shorthand
+			</h2>
+			<hr class="border-t-2" />
+			<div class="m-10 py-3 px-10 border p-2 bg-green-200 ">
+				<p class="font-mono text-white text-teal-800">
+					<span class="text-gray-600">&lt;!-- full syntax --&gt;</span>
+					<br />
+					&lt;a v-bind:href="url"&gt;...&lt;/a&gt;
+				</p>
+				<br />
+				<p class="font-mono text-white text-teal-800">
+					<span class="text-gray-600">&lt;!-- shorthand --&gt;</span>
+					<br />
+					&lt;a :href="url"&gt;...&lt;/a&gt;
+				</p>
+				<br />
+				<p class="font-mono text-white text-teal-800">
+					<span class="text-gray-600"
+						>&lt;!-- shorthand with dynamic argument --&gt;</span
+					>
+					<br />
+					&lt;a :[attributeName]="url"&gt;...&lt;/a&gt;
+				</p>
+			</div>
+
+			<h2 class="font-semibold text-3xl mb-4">
+				<span class="text-teal-800 p-2 bg-green-300">v-on</span> Shorthand
+			</h2>
+			<hr class="border-t-2" />
+			<div class="m-10 py-3 px-10 border p-2 bg-green-200 ">
+				<p class="font-mono text-white text-teal-800">
+					<span class="text-gray-600">&lt;!-- full syntax --&gt;</span>
+					<br />
+					&lt;a v-on:click="doSomething"&gt;...&lt;/a&gt;
+				</p>
+				<br />
+				<p class="font-mono text-white text-teal-800">
+					<span class="text-gray-600">&lt;!-- shorthand --&gt;</span>
+					<br />
+					&lt;a @click="doSomething"&gt;...&lt;/a&gt;
+				</p>
+				<br />
+				<p class="font-mono text-white text-teal-800">
+					<span class="text-gray-600"
+						>&lt;!-- shorthand with dynamic argument --&gt;</span
+					>
+					<br />
+					&lt;a @[event]="doSomething"&gt;...&lt;/a&gt;
+				</p>
+			</div>
 		</div>
 
 		<footer class="mt-16 bg-green-500 p-4">
@@ -32,5 +155,16 @@
 				Learning VueJs
 			</p>
 		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					dynamicId: '{{dynamicId}}',
+					classImg: 'status-img',
+					att: 'class'
+				}
+			});
+		</script>
 	</body>
 </html>
