@@ -19,10 +19,27 @@
 			.status-img > img {
 				width: 28px;
 			}
+			.link-website {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.link-1 {
+				left: 20px;
+			}
+			.link-1 img {
+				width: 28px;
+			}
+			.link-1 a:nth-child(2) {
+				padding: 0px 7px;
+			}
+			.link-2 {
+				right: 20px;
+			}
 		</style>
 	</head>
 	<body class="bg-green-100 text-gray-700 text-xl">
-		<div id="app" class="container mx-auto">
+		<div id="app" class="container mx-auto p-10">
 			<a href="https://vuejs-basics.netlify.com" class="absolute">
 				<img
 					class="w-20"
@@ -146,14 +163,52 @@
 					&lt;a @[event]="doSomething"&gt;...&lt;/a&gt;
 				</p>
 			</div>
+			<h2 class="font-semibold mt-8 mb-3">
+				Note: (Dynamic Argument Constraints)
+			</h2>
+			<p class="tracking-wider leading-relaxed">
+				Dynamic argument expressions(:[]) have some syntax constraints because
+				certain characters, such as spaces and quotes, are invalid inside HTML
+				attribute names.
+			</p>
 		</div>
 
-		<footer class="mt-16 bg-green-500 p-4">
+		<footer class="mt-16 bg-green-500 p-4 relative">
+			<div class="link-website link-1 inline-flex">
+				<a
+					class="text-white"
+					href="https://github.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/github-logo.png" alt="github" />
+				</a>
+				<a
+					class="text-white"
+					href="https://twitter.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/twitter.png" alt="twitter" />
+				</a>
+				<a
+					class="text-white"
+					href="https://www.linkedin.com/in/jscodelover/"
+					target="_blank"
+				>
+					<img src="../image/linkedin.png" alt="linkedin" />
+				</a>
+			</div>
+
 			<p
 				class="text-center text-white leading-relaxed tracking-wider uppercase"
 			>
 				Learning VueJs
 			</p>
+			<a
+				class="link-website link-2 text-white"
+				href="https://www.vuemastery.com/"
+				target="_blank"
+				>VueMastery.com</a
+			>
 		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script>
