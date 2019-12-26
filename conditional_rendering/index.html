@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Conditional Rendering</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
+			rel="stylesheet"
+		/>
+		<style>
+			.item-list {
+				height: calc(100vh - 110px - 32px);
+			}
+			.link-website {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.link-1 {
+				left: 20px;
+			}
+			.link-1 img {
+				width: 28px;
+			}
+			.link-1 a:nth-child(2) {
+				padding: 0px 7px;
+			}
+			.link-2 {
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body class="bg-green-100 text-gray-700 text-xl">
+		<!-- Vue Instace Plugging element -->
+		<div id="root" class="container mx-auto p-10">
+			<a href="https://vuejs-basics.netlify.com" class="absolute">
+				<img
+					class="w-20"
+					style="top: 10px;"
+					src="../image/vue_icon.png"
+					alt="vue_icon"
+			/></a>
+			<h1 class="text-6xl text-center text-green-800 underline my-8">
+				Conditional Rendering
+			</h1>
+			<p class="leading-relaxed tracking-wider">
+				Vuejs provide various <strong>v-</strong> directives for conditional
+				rendering.
+			</p>
+			<div class="pt-8">
+				<button
+					v-on:click="handleClick"
+					class="bg-green-500 w-24 hover:bg-green-700 focus:outline-none text-white font-bold py-2 px-4 rounded mr-4"
+				>
+					{{ show ? 'Hide' : 'Show' }}
+				</button>
+				<span
+					v-if="show"
+					class="font-semibold text-green-600 leading-relaxed tracking-wider"
+				>
+					Oops... not a secret anymore
+				</span>
+				<span
+					v-else
+					class="font-semibold text-green-600 leading-relaxed tracking-wider"
+				>
+					Shh... It's a secret
+				</span>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;p v-if="show" class="leading-relaxed tracking-wider">Oops... not a
+					secret anymore&lt;/p&gt;
+					<br /><br />
+					&lt;p v-else class="leading-relaxed tracking-wider">Shh... It's a
+					secret &lt;/p&gt;
+				</p>
+			</div>
+			<p class="tracking-wider leading-relaxed">
+				There are times when we have to frequently toggle element on and off.
+				Vuejs provide's <strong>v-show</strong> directive for that.
+				<br />
+				An element with this directive on it will always be present in our DOM,
+				but it will only be visible on the page if its condition is met. It will
+				conditionally add or remove the CSS property <em>display: none</em> to
+				the element.
+			</p>
+			<div class="pt-8">
+				<button
+					v-on:click="handleToggle"
+					class="bg-green-500 w-24 hover:bg-green-700 focus:outline-none text-white font-bold py-2 px-4 rounded mr-4"
+				>
+					{{ toggle ? 'Hide' : 'Show' }}
+				</button>
+				<span
+					v-show="toggle"
+					class="font-semibold text-green-600 leading-relaxed tracking-wider"
+				>
+					You can read this data...
+				</span>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;p v-show="toggle" class="leading-relaxed tracking-wider">You can
+					read this data...&lt;/p&gt;
+				</p>
+			</div>
+		</div>
+		<footer class="mt-16 bg-green-500 p-4 relative">
+			<div class="link-website link-1 inline-flex">
+				<a
+					class="text-white"
+					href="https://github.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/github-logo.png" alt="github" />
+				</a>
+				<a
+					class="text-white"
+					href="https://twitter.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/twitter.png" alt="twitter" />
+				</a>
+				<a
+					class="text-white"
+					href="https://www.linkedin.com/in/jscodelover/"
+					target="_blank"
+				>
+					<img src="../image/linkedin.png" alt="linkedin" />
+				</a>
+			</div>
+
+			<p
+				class="text-center text-white leading-relaxed tracking-wider uppercase"
+			>
+				Learning VueJs
+			</p>
+			<a
+				class="link-website link-2 text-white"
+				href="https://www.vuemastery.com/"
+				target="_blank"
+				>VueMastery.com</a
+			>
+		</footer>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#root',
+			data: {
+				show: false,
+				toggle: false
+			},
+			methods: {
+				handleClick: function() {
+					this.show = !this.show;
+				},
+				handleToggle: function() {
+					console.log(this.toggle);
+					this.toggle = !this.toggle;
+				}
+			}
+		});
+	</script>
+</html>
