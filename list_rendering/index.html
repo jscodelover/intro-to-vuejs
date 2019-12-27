@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>List Rendering</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
+			rel="stylesheet"
+		/>
+		<style>
+			.link-website {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.link-1 {
+				left: 20px;
+			}
+			.link-1 img {
+				width: 28px;
+			}
+			.link-1 a:nth-child(2) {
+				padding: 0px 7px;
+			}
+			.link-2 {
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body class="bg-green-100 text-gray-700 text-xl">
+		<div id="root" class="container mx-auto p-10">
+			<a href="https://vuejs-basics.netlify.com" class="absolute">
+				<img
+					class="w-20"
+					style="top: 10px;"
+					src="../image/vue_icon.png"
+					alt="vue_icon"
+				/>
+			</a>
+			<h1 class="text-6xl text-center text-green-800 underline">
+				List Rendering
+			</h1>
+			<p class="leading-relaxed tracking-wider pt-4">
+				There are case when we have to iterate over the data(data can be in
+				array or object or object in array and in various other iterable form).
+				To handle such a case Vuejs provide a <strong>v-for</strong> directive.
+				<br />
+				<br />
+				The <strong>v-for</strong> directive allows us to loop over an iterative
+				data and render data from within it. The syntax within the quotes of the
+				<strong>v-for</strong> directive may look familiar if you have used
+				JavaScript’s <em>'for of'</em> or <em>'for in'</em> before.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;ul&gt;<br />
+					&nbsp; &lt;li v-for="point in aboutVue"&gt;{{ point }}&lt;/li&gt;
+					<br />
+					&lt;/ul&gt;
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				Since our <strong>v-for</strong> is inside an
+				<span class="text-orange-600">&lt;li&gt;</span>, Vue will print out a
+				new <span class="text-orange-600">&lt;li&gt;</span> for each point in
+				our aboutVue array. If our <strong>v-for</strong> was inside a
+				<span class="text-orange-600">&lt;div&gt;</span>, then a
+				<span class="text-orange-600">&lt;div&gt;</span> would have been printed
+				out for each array item along with its content.
+			</p>
+			<p class="leading-relaxed tracking-wider pt-8">For example:</p>
+			<!-- List rendering example-->
+			<ol class="list-decimal ml-8 mt-4">
+				<li v-for="(point,index) in aboutVue" :key="index">{{ point }}</li>
+			</ol>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; aboutVue: [ <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Vuejs is javscript framework', <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Vuejs or js-in-html', <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Vuejs is reactive in nature' ]
+					<br />
+					&nbsp; } <br />})
+				</p>
+			</div>
+			<p class="mt-10 mb-5 underline text-4xl">EXTRA</p>
+			<p class="leading-relaxed tracking-wider">
+				Inside <strong>v-for</strong> blocks we have full access to parent scope
+				properties. <strong>v-for</strong> also supports an optional second
+				argument for the index of the current item.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;ul&gt;<br />
+					&nbsp; &lt;li v-for="(item, index) in items"&gt;{{ index }} - {{ item
+					}}&lt;/li&gt;
+					<br />
+					&lt;/ul&gt;
+				</p>
+			</div>
+		</div>
+		<footer class="mt-16 bg-green-500 p-4 relative">
+			<div class="link-website link-1 inline-flex">
+				<a
+					class="text-white"
+					href="https://github.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/github-logo.png" alt="github" />
+				</a>
+				<a
+					class="text-white"
+					href="https://twitter.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/twitter.png" alt="twitter" />
+				</a>
+				<a
+					class="text-white"
+					href="https://www.linkedin.com/in/jscodelover/"
+					target="_blank"
+				>
+					<img src="../image/linkedin.png" alt="linkedin" />
+				</a>
+			</div>
+
+			<p
+				class="text-center text-white leading-relaxed tracking-wider uppercase"
+			>
+				Learning VueJs
+			</p>
+			<a
+				class="link-website link-2 text-white"
+				href="https://www.vuemastery.com/"
+				target="_blank"
+				>VueMastery.com</a
+			>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#root',
+				data: {
+					aboutVue: [
+						'Vuejs is javscript framework',
+						'Vuejs or js-in-html',
+						'Vuejs is reactive in nature'
+					]
+				}
+			});
+		</script>
+	</body>
+</html>
