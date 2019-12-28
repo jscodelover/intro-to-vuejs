@@ -97,9 +97,9 @@
 			</div>
 			<p class="mt-10 mb-5 underline text-4xl">EXTRA</p>
 			<p class="leading-relaxed tracking-wider">
-				Inside <strong>v-for</strong> blocks we have full access to parent scope
-				properties. <strong>v-for</strong> also supports an optional second
-				argument for the index of the current item.
+				1. Inside <strong>v-for</strong> blocks we have full access to parent
+				scope properties. <strong>v-for</strong> also supports an optional
+				second argument for the index of the current item.
 			</p>
 			<div class="m-10 py-3 px-10 border bg-green-900">
 				<p class="font-mono text-white">
@@ -110,6 +110,52 @@
 					&lt;/ul&gt;
 				</p>
 			</div>
+			<p class="leading-relaxed tracking-wider">
+				2. You can also use <strong><em>of</em></strong> as the delimiter
+				instead of <strong><em>in</em></strong
+				>, so that it is closer to JavaScript’s syntax for iterators:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;p v-for="(item, index) of items"&gt;{{ index }} - {{
+					item}}&lt;/p&gt;
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				3. You can also use <strong>v-for</strong> to iterate through the
+				properties of an object.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;ul&gt;<br />
+					&nbsp; &lt;li v-for="(value, name, index) in objVue"&gt;{{ index }}.
+					{{ name }}: {{value}}&lt;/li&gt;
+					<br />
+					&lt;/ul&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; objVue: { <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: 'How to do lists in Vue', <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author: 'jscodelover', <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code: 'github' }
+					<br />
+					&nbsp; } <br />})
+				</p>
+			</div>
+			<p>Result:</p>
+			<ul class="ml-8 mt-4">
+				<li v-for="(value,name,index) in objVue" :key="index">
+					{{ index }}. {{ name }}: {{value}}
+				</li>
+			</ul>
 		</div>
 		<footer class="mt-16 bg-green-500 p-4 relative">
 			<div class="link-website link-1 inline-flex">
@@ -157,7 +203,16 @@
 						'Vuejs is javscript framework',
 						'Vuejs or js-in-html',
 						'Vuejs is reactive in nature'
-					]
+					],
+					objVue: {
+						title: 'How to do lists in Vue',
+						author: 'jscodelover',
+						code: 'github'
+					},
+					index: '{{ index }}', // just for html because {{ }} looking for data in vue instance
+					item: '{{ item}}',
+					value: '{{value}}',
+					name: '{{name}}'
 				}
 			});
 		</script>
