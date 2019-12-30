@@ -5,5 +5,8 @@
 - Conditional Rendering
 - List Rendering
 - Event Handling
+- Class and Style Binding
 
 Status - Under Construction 🚧
+
+[Website Link](https://vuejs-basics.netlify.com/)

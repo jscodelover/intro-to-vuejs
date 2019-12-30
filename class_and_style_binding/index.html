@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>List Rendering</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
+			rel="stylesheet"
+		/>
+		<style>
+			.link-website {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.link-1 {
+				left: 20px;
+			}
+			.link-1 img {
+				width: 28px;
+			}
+			.link-1 a:nth-child(2) {
+				padding: 0px 7px;
+			}
+			.link-2 {
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body class="bg-green-100 text-gray-700 text-xl">
+		<div class="container mx-auto p-10">
+			<a href="https://vuejs-basics.netlify.com" class="absolute">
+				<img
+					class="w-20"
+					style="top: 10px;"
+					src="../image/vue_icon.png"
+					alt="vue_icon"
+				/>
+			</a>
+			<h1 class="text-6xl text-center text-green-800 underline">
+				Class and Style Binding
+			</h1>
+			<p class="leading-relaxed tracking-wider pt-8">
+				Both class and style are attribute of elements. They use
+				<strong>v-bind</strong> vuejs directive.
+			</p>
+			<h1 class="text-3xl mt-6 underline">Class Binding</h1>
+			<h2 class="font-semibold mt-8 mb-3">#Object Syntax</h2>
+			<p class="leading-relaxed tracking-wider ">
+				1. The above syntax means the presence of the "activeClass" class will
+				be determined by the truthiness of the data property "isActive".
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:class="{activeClass: isActive}"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; isActive: false, <br />
+					&nbsp;&nbsp; activeClass: 'heading' <br />
+					&nbsp; } <br />})
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider ">
+				2.The bound object doesn’t have to be inline: 2. You can have multiple
+				classes toggled by having more fields in the object. In addition, the
+				v-bind:class directive can also co-exist with the plain class attribute.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div class="static" :class="{ activeClass: isActive, 'text-danger':
+					hasError }"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider ">
+				3.The bound object doesn’t have to be inline:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div :class="classObject"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; classObject: { <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'active': false, <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'text-danger': true, <br />
+					&nbsp;&nbsp; } <br />
+					&nbsp; } <br />});
+				</p>
+			</div>
+			<h2 class="font-semibold mt-8 mb-3">#Array Syntax</h2>
+			<p class="leading-relaxed tracking-wider ">
+				1. We can pass an array to v-bind:class to apply a list of classes.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:class="[activeClass, errorClass]"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; activeClass: 'active', <br />
+					&nbsp;&nbsp; errorClass: 'text-danger' <br />
+					&nbsp; } <br />});
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider ">
+				2. You can do it with a ternary expression:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:class="[isActive ? activeClass : '',
+					errorClass]"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider ">
+				3. However, this can be a bit verbose if you have multiple conditional
+				classes. That’s why it’s also possible to use the object syntax inside
+				array syntax:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:class="[{ activeClass: isActive },
+					errorClass]"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<h1 class="text-3xl mt-6 underline">Style Binding</h1>
+			<h2 class="font-semibold mt-8 mb-3">#Object Syntax</h2>
+			<p class="leading-relaxed tracking-wider ">
+				It's same as class binding.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px'
+					}"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; activeColor: 'red', <br />
+					&nbsp;&nbsp; fontSize: 30 <br />
+					&nbsp; } <br />})
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider ">
+				Style Object.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:style="styleObject"&gt;&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; styleObject: { <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activeColor: 'red', <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fontSize: 30, <br />
+					&nbsp;&nbsp; } <br />
+					&nbsp; } <br />});
+				</p>
+			</div>
+			<h2 class="font-semibold mt-8 mb-3">#Array Syntax</h2>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div v-bind:class="[baseStyles, overridingStyles]"&gt;&lt;/div&gt;
+				</p>
+			</div>
+		</div>
+		<footer class="mt-16 bg-green-500 p-4 relative">
+			<div class="link-website link-1 inline-flex">
+				<a
+					class="text-white"
+					href="https://github.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/github-logo.png" alt="github" />
+				</a>
+				<a
+					class="text-white"
+					href="https://twitter.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/twitter.png" alt="twitter" />
+				</a>
+				<a
+					class="text-white"
+					href="https://www.linkedin.com/in/jscodelover/"
+					target="_blank"
+				>
+					<img src="../image/linkedin.png" alt="linkedin" />
+				</a>
+			</div>
+
+			<p
+				class="text-center text-white leading-relaxed tracking-wider uppercase"
+			>
+				Learning VueJs
+			</p>
+			<a
+				class="link-website link-2 text-white"
+				href="https://www.vuemastery.com/"
+				target="_blank"
+				>VueMastery.com</a
+			>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</body>
+</html>
