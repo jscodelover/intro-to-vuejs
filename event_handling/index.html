@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Event Handling</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
+			rel="stylesheet"
+		/>
+		<style>
+			.link-website {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.link-1 {
+				left: 20px;
+			}
+			.link-1 img {
+				width: 28px;
+			}
+			.link-1 a:nth-child(2) {
+				padding: 0px 7px;
+			}
+			.link-2 {
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body class="bg-green-100 text-gray-700 text-xl">
+		<div class="container mx-auto p-10">
+			<a href="https://vuejs-basics.netlify.com" class="absolute">
+				<img
+					class="w-20"
+					style="top: 10px;"
+					src="../image/vue_icon.png"
+					alt="vue_icon"
+				/>
+			</a>
+			<h1 class="text-6xl text-center text-green-800 underline">
+				Event Handling
+			</h1>
+			<p class="leading-relaxed tracking-wider pt-4">
+				In event handling, we’ll be learning how to listen for DOM events that
+				we can use to trigger methods. We can use the
+				<strong>v-on</strong> directive to listen to DOM events and run some
+				JavaScript when they’re triggered.
+			</p>
+			<p class="leading-relaxed tracking-wider py-4">For example:</p>
+			<div id="root">
+				<button
+					v-on:click="updateCount"
+					class="bg-green-500 w-32 hover:bg-green-700 focus:outline-none text-white font-bold py-2 px-4 rounded mr-4"
+				>
+					Click Me
+				</button>
+				<span>The button above has been clicked {{ counter }} times.</span>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div&gt;<br />
+					&nbsp; &lt;button v-on:click="updateCount"&gt;Click
+					Me&lt;/button&gt;<br />
+					&nbsp; &lt;p&gt;The button above has been clicked {{ counter }}
+					times.&lt;/p&gt;<br />
+					&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; counter: 0
+					<br />
+					&nbsp; }, <br />
+					&nbsp; methods:{
+					<br />
+					&nbsp;&nbsp; updateCount: function(){<br />
+					&nbsp;&nbsp; &nbsp;&nbsp; this.counter = this.counter + 1; <br />
+					&nbsp;&nbsp;&nbsp;}
+					<br />
+					&nbsp; } <br />
+					});
+				</p>
+			</div>
+			<p class="mt-10 mb-5 underline text-4xl">EXTRA</p>
+			<h2 class="font-semibold mt-7 mb-3">Method in inline handler</h2>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div&gt;<br />
+					&nbsp; &lt;button v-on:click="updateCount('count')"&gt;Click
+					Me&lt;/button&gt;<br />
+					&nbsp; &lt;p&gt;The button above has been clicked {{ counter }}
+					times.&lt;/p&gt;<br />
+					&lt;/div&gt;
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				Sometimes we also need to access the original DOM event in an inline
+				statement handler. You can pass it into a method using the special
+				<strong>$event</strong> variable:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div&gt;<br />
+					&nbsp; &lt;button v-on:click="updateCount('count', $event)"&gt;Click
+					Me&lt;/button&gt;<br />
+					&nbsp; &lt;p&gt;The button above has been clicked {{ counter }}
+					times.&lt;/p&gt;<br />
+					&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					methods:{
+					<br />
+					&nbsp; updateCount: function(message, event){<br />
+					&nbsp; &nbsp;&nbsp; if(event) <br />
+					&nbsp; &nbsp;&nbsp; &nbsp; event.preventDefault();<br />
+					&nbsp; &nbsp;&nbsp; this.counter = this.counter + 1; <br />
+					&nbsp; &nbsp;&nbsp; alert(message);<br />
+					&nbsp;&nbsp;}
+					<br />
+					}
+				</p>
+			</div>
+			<h2 class="font-semibold mt-7 mb-3">Event Modifiers</h2>
+			<p class="leading-relaxed tracking-wider pb-4">
+				Vue provides event modifiers for <strong>v-on</strong>:
+			</p>
+			<ul class="list-disc ml-12">
+				<li>
+					<span class="font-bold underline">.stop</span> call
+					event.stopPropagation()
+				</li>
+				<li>
+					<span class="font-bold underline">.prevent</span> call
+					event.stopPropagation()
+				</li>
+				<li>
+					<span class="font-bold underline">.capture</span> uses event capturing
+					instead of event bubbling
+				</li>
+				<li>
+					<span class="font-bold underline">.self</span> make sure the click
+					event was not bubbled from a child event, but directly happened on
+					that element
+				</li>
+				<li>
+					<span class="font-bold underline">.once</span> the event will only be
+					triggered exactly once
+				</li>
+				<li>
+					<span class="font-bold underline">.passive</span> makes use of the
+					passive option of addEventListener
+				</li>
+			</ul>
+			<img
+				class="w-3/4 mx-auto mt-8"
+				src="../image/carbon.png"
+				alt="event-modifier"
+			/>
+			<p class="mt-10 mb-5 underline text-4xl">NOTE:</p>
+			<p class="tracking-wider leading-relaxed">
+				When using the modifiers in chain(eg: v-on:click.once.prevent), order
+				matters when using modifiers because the relevant code is generated in
+				the same order.
+			</p>
+			<a
+				class="mt-8 inline-block underline text-blue-600"
+				href="https://vuejs.org/v2/guide/events.html"
+				target="_blank"
+				>Go to Vuejs doc for more detail on Event Handling.</a
+			>
+		</div>
+		<footer class="mt-16 bg-green-500 p-4 relative">
+			<div class="link-website link-1 inline-flex">
+				<a
+					class="text-white"
+					href="https://github.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/github-logo.png" alt="github" />
+				</a>
+				<a
+					class="text-white"
+					href="https://twitter.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/twitter.png" alt="twitter" />
+				</a>
+				<a
+					class="text-white"
+					href="https://www.linkedin.com/in/jscodelover/"
+					target="_blank"
+				>
+					<img src="../image/linkedin.png" alt="linkedin" />
+				</a>
+			</div>
+
+			<p
+				class="text-center text-white leading-relaxed tracking-wider uppercase"
+			>
+				Learning VueJs
+			</p>
+			<a
+				class="link-website link-2 text-white"
+				href="https://www.vuemastery.com/"
+				target="_blank"
+				>VueMastery.com</a
+			>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#root',
+				data: {
+					counter: 0
+				},
+				methods: {
+					updateCount: function() {
+						this.counter = this.counter + 1;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

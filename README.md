@@ -4,5 +4,6 @@
 - Attribute Binding
 - Conditional Rendering
 - List Rendering
+- Event Handling
 
 Status - Under Construction 🚧
