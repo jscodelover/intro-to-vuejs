@@ -6,6 +6,7 @@
 - List Rendering
 - Event Handling
 - Class and Style Binding
+- Computed Properties
 
 Status - Under Construction 🚧
 

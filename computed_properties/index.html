@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Attribute Binding</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
+			rel="stylesheet"
+		/>
+		<style>
+			.link-website {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.link-1 {
+				left: 20px;
+			}
+			.link-1 img {
+				width: 28px;
+			}
+			.link-1 a:nth-child(2) {
+				padding: 0px 7px;
+			}
+			.link-2 {
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body class="bg-green-100 text-gray-700 text-xl">
+		<div id="app" class="container mx-auto p-10">
+			<a href="https://vuejs-basics.netlify.com" class="absolute">
+				<img
+					class="w-20"
+					style="top: 10px;"
+					src="../image/vue_icon.png"
+					alt="vue_icon"
+			/></a>
+			<h1 class="text-6xl text-center text-green-800 underline my-8">
+				Computed Properties
+			</h1>
+			<p class="leading-relaxed tracking-wider pt-8">
+				Computed Properties are properties on the Vue instance that calculate a
+				value rather than store a value.
+				<br /><br />
+				For Example:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;div&gt; <br />
+					&nbsp;&nbsp; &lt;p&gt;Original message: "{{ message }}"&lt;/p&gt;
+					<br />
+					&nbsp;&nbsp; &lt;p&gt;Computed reversed message: "{{ reversedMessage
+					}}"&lt;/p&gt;
+					<br />
+					&lt;/div&gt;
+				</p>
+			</div>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					const app = new Vue({
+					<br />
+					&nbsp; el: "#root",
+					<br />
+					&nbsp; data:{
+					<br />
+					&nbsp;&nbsp; message: 'Hello'
+					<br />
+					&nbsp; }, <br />
+					&nbsp; computed: { <br />
+					&nbsp;&nbsp;&nbsp;reversedMessage: function() { <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return
+					this.message.split('').reverse().join(); <br />
+					&nbsp;&nbsp; } <br />
+					&nbsp; } <br />});
+				</p>
+			</div>
+			<p class="font-semibold text-green-600 leading-relaxed tracking-wider">
+				Original message: <span class="font-bold">Hello</span>
+			</p>
+			<p class="font-semibold text-green-600 leading-relaxed tracking-wider">
+				Computed reversed message: <span class="font-bold">olleH</span>
+			</p>
+		</div>
+
+		<footer class="mt-16 bg-green-500 p-4 relative">
+			<div class="link-website link-1 inline-flex">
+				<a
+					class="text-white"
+					href="https://github.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/github-logo.png" alt="github" />
+				</a>
+				<a
+					class="text-white"
+					href="https://twitter.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/twitter.png" alt="twitter" />
+				</a>
+				<a
+					class="text-white"
+					href="https://www.linkedin.com/in/jscodelover/"
+					target="_blank"
+				>
+					<img src="../image/linkedin.png" alt="linkedin" />
+				</a>
+			</div>
+
+			<p
+				class="text-center text-white leading-relaxed tracking-wider uppercase"
+			>
+				Learning VueJs
+			</p>
+			<a
+				class="link-website link-2 text-white"
+				href="https://www.vuemastery.com/"
+				target="_blank"
+				>VueMastery.com</a
+			>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</body>
+</html>
