@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Attribute Binding</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"
+			rel="stylesheet"
+		/>
+		<style>
+			.link-website {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.link-1 {
+				left: 20px;
+			}
+			.link-1 img {
+				width: 28px;
+			}
+			.link-1 a:nth-child(2) {
+				padding: 0px 7px;
+			}
+			.link-2 {
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body class="bg-green-100 text-gray-700 text-xl">
+		<div id="app" class="container mx-auto p-10">
+			<a href="https://vuejs-basics.netlify.com" class="absolute">
+				<img
+					class="w-20"
+					style="top: 10px;"
+					src="../image/vue_icon.png"
+					alt="vue_icon"
+			/></a>
+			<h1 class="text-6xl text-center text-green-800 underline my-8">
+				Vue Component
+			</h1>
+			<p class="leading-relaxed tracking-wider pt-4">
+				Components are single, independent units of an interface. They can have
+				their own state, markup and style. Since components are reusable Vue
+				instances, they accept the same options as <strong>new Vue</strong>,
+				such as <strong>data</strong>, <strong>computed</strong>,
+				<strong>watch</strong>, <strong>methods</strong>, and lifecycle hooks.
+				The only exceptions are a few root-specific options like
+				<strong>el</strong>.
+			</p>
+			<div class="my-8">
+				<p>Here’s an example of a Vue component:</p>
+				<img class="w-3/4 mx-auto" src="../image/comp.png" alt="comp" />
+				<p class="leading-relaxed tracking-wider p-4">
+					We can use this component as a custom element inside a root Vue
+					instance created with new Vue
+				</p>
+				<img class="w-3/4 mx-auto" src="../image/mybutton.png" alt="mybutton" />
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				Components can be reused as many times as you want.
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					&lt;MyButton /&gt; <br />
+					&lt;MyButton /&gt; <br />
+					&lt;MyButton /&gt;
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				When we defined the <strong>&lt;MyButton /&gt;</strong> component, you
+				may have noticed that data wasn’t directly provided an object, like
+				this:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					data: { <br />
+					&nbsp; count: 0 <br />
+					} <br />
+				</p>
+			</div>
+			<p class="leading-relaxed tracking-wider">
+				Instead, a component’s data option must be a function, so that each
+				instance can maintain an independent copy of the returned data object:
+			</p>
+			<div class="m-10 py-3 px-10 border bg-green-900">
+				<p class="font-mono text-white">
+					data: function() { <br />
+					&nbsp; return { count: 0 } <br />
+					} <br />
+				</p>
+			</div>
+		</div>
+
+		<footer class="mt-16 bg-green-500 p-4 relative">
+			<div class="link-website link-1 inline-flex">
+				<a
+					class="text-white"
+					href="https://github.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/github-logo.png" alt="github" />
+				</a>
+				<a
+					class="text-white"
+					href="https://twitter.com/jscodelover"
+					target="_blank"
+				>
+					<img src="../image/twitter.png" alt="twitter" />
+				</a>
+				<a
+					class="text-white"
+					href="https://www.linkedin.com/in/jscodelover/"
+					target="_blank"
+				>
+					<img src="../image/linkedin.png" alt="linkedin" />
+				</a>
+			</div>
+
+			<p
+				class="text-center text-white leading-relaxed tracking-wider uppercase"
+			>
+				Learning VueJs
+			</p>
+			<a
+				class="link-website link-2 text-white"
+				href="https://www.vuemastery.com/"
+				target="_blank"
+				>VueMastery.com</a
+			>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</body>
+</html>
